@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(value = "id") Long id){
+    public String delete(@PathVariable(value = "id") String id){
         userService.delete(id);
         return "success";
     }

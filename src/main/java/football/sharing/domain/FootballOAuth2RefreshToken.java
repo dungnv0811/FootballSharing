@@ -1,5 +1,6 @@
 package football.sharing.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -7,16 +8,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "football_oauth2_refresh_token")
+@Data
 public class FootballOAuth2RefreshToken {
 
     @Id
     private String tokenId;
     private byte[] token;
     private byte[] authentication;
-
-    public FootballOAuth2RefreshToken() {
-    }
 
     @PersistenceConstructor
     public FootballOAuth2RefreshToken(final String tokenId,
@@ -25,18 +24,6 @@ public class FootballOAuth2RefreshToken {
         this.tokenId = tokenId;
         this.token = token;
         this.authentication = authentication;
-    }
-
-    public String getTokenId() {
-        return tokenId;
-    }
-
-    public byte[] getToken() {
-        return token;
-    }
-
-    public byte[] getAuthentication() {
-        return authentication;
     }
 
     @Override

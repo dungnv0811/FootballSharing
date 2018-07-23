@@ -16,9 +16,9 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    static final String CLIEN_ID = "devglan-client";
+    static final String CLIEN_ID = "football-sharing";
     // For Spring Boot 2 you need to Bcrypt CLIENT_SECRET
-    static final String CLIENT_SECRET = "$2a$04$e/c1/RfsWuThaWFCrcCuJeoyvwCV0URN/6Pn9ZFlrtIWaU/vj/BfG";
+    static final String CLIENT_SECRET = "$2a$10$OPPEKS8JFvrkvt/8eqUSSeleMh2DzL6UO4OoAG0mXICac.mBefpzu";
     static final String GRANT_TYPE_PASSWORD = "password";
     static final String AUTHORIZATION_CODE = "authorization_code";
     static final String REFRESH_TOKEN = "refresh_token";
