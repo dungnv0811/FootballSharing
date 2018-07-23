@@ -27,10 +27,15 @@ public class UserController {
         return userService.save(userDTO);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public String delete(@PathVariable(value = "id") String id){
         userService.delete(id);
         return "success";
+    }
+
+    @GetMapping(value = "/{id}")
+    public UserDTO show(@PathVariable(value = "id") String id){
+        return userService.findById(id);
     }
 
 }

@@ -9,4 +9,5 @@ public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByUsername(String username);
     void deleteByUsername(String username);
     User findByUsernameAndPassword(String username, String password);
+    Optional<User> findById(String id);
 }

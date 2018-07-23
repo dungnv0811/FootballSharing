@@ -3,6 +3,7 @@ package football.sharing.service.user;
 import football.sharing.domain.Role;
 import football.sharing.domain.User;
 import football.sharing.dto.user.UserDTO;
+import football.sharing.exception.FootballNotFoundException;
 import football.sharing.mapper.user.UserMapper;
 import football.sharing.repository.user.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,6 +43,15 @@ public class UserServiceImpl implements  UserService {
     @Override
     public void delete(String id) {
 
+    }
+
+    @Override
+    public UserDTO findById(String id) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            throw new FootballNotFoundException("Can not find user");
+        }
+        return userMapper.userToUserDTO(user.get());
     }
 
     private Set<Role> getDefaultRole() {

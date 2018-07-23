@@ -8,4 +8,5 @@ public interface UserService {
     UserDTO save(UserDTO userDTO);
     List<UserDTO> findAll();
     void delete(String id);
+    UserDTO findById(String id);
 }
