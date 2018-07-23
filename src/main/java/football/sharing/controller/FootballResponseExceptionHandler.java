@@ -1,6 +1,6 @@
 package football.sharing.controller;
 
-import football.sharing.config.MessageConfiguration;
+import football.sharing.config.MessageConfig;
 import football.sharing.controller.response.FootballErrorResponse;
 import football.sharing.exception.FootballBadRequestException;
 import football.sharing.exception.FootballNotFoundException;
@@ -19,10 +19,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class FootballResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private final MessageConfiguration messageConfiguration;
+    private final MessageConfig messageConfig;
 
-    public FootballResponseExceptionHandler(MessageConfiguration messageConfiguration) {
-        this.messageConfiguration = messageConfiguration;
+    public FootballResponseExceptionHandler(MessageConfig messageConfig) {
+        this.messageConfig = messageConfig;
     }
 
     // return 500 INTERNAL_SERVER_ERROR
@@ -63,7 +63,7 @@ public class FootballResponseExceptionHandler extends ResponseEntityExceptionHan
         String message;
 
         if (StringUtils.isEmpty(exception.getMessage())) {
-            message = messageConfiguration.getExceptionNotFound();
+            message = messageConfig.getExceptionNotFound();
         } else {
             message = exception.getMessage();
         }

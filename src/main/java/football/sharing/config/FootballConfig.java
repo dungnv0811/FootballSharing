@@ -5,5 +5,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource(value = {"classpath:messages.properties"})
-public class FootballConfiguration {
+@PropertySource(value = {"classpath:constants.properties"})
+public class FootballConfig {
 }

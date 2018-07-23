@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class MessageConfiguration {
+public class MessageConfig {
     @Value("${exception.not_found}")
     private String exceptionNotFound;
 }
