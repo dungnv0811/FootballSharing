@@ -1,6 +1,5 @@
 package football.sharing.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
 
@@ -21,9 +22,42 @@ public class User implements UserDetails {
     @Id
     private String id;
     private String username;
-    @JsonIgnore
     private String password;
     private Set<Role> roles;
+    private boolean accountNonExpired = true;
+
+    private boolean accountNonLocked = true;
+
+    private boolean enabled = true;
+
+    private boolean credentialsNonExpired = true;
+
+    @Email
+    private String email;
+
+    private String name;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String country;
+
+    private String city;
+
+    private String bio;
+
+    private String avatarUrl;
+
+    private String coverUrl;
+
+    private String facebookId;
+
+    private String googleId;
+
+    private String resetPasswordToken;
+    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
 
     @Override
     public boolean isAccountNonExpired() {

@@ -1,11 +1,12 @@
-package football.sharing.service;
+package football.sharing.service.user;
 
 import football.sharing.domain.User;
+import football.sharing.dto.user.UserDTO;
 
 import java.util.List;
 
 public interface UserService {
-    User save(User user);
+    UserDTO save(UserDTO userDTO);
     List<User> findAll();
     void delete(String id);
 }

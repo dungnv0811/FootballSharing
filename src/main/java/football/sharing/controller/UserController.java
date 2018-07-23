@@ -1,27 +1,30 @@
 package football.sharing.controller;
 
-import football.sharing.domain.User;
-import football.sharing.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import football.sharing.dto.user.UserDTO;
+import football.sharing.service.user.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(UserController.BASE_URL)
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    public static final String BASE_URL = "/api/v1/users";
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value="/user", method = RequestMethod.GET)
     public List listUser(){
         return userService.findAll();
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public User create(@RequestBody User user){
-        return userService.save(user);
+    @PostMapping("/register")
+    public UserDTO create(@RequestBody UserDTO userDTO){
+        return userService.save(userDTO);
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
