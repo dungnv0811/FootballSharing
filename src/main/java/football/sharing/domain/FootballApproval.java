@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.provider.approval.Approval.ApprovalSt
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Document(collection = "radio_approval")
+@Document(collection = "football_approval")
 @Data
 public class FootballApproval {
 

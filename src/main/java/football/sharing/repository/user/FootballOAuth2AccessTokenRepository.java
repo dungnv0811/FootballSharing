@@ -8,9 +8,9 @@ import java.util.List;
 public interface FootballOAuth2AccessTokenRepository extends MongoRepository<FootballOAuth2AccessToken, String> {
     FootballOAuth2AccessToken findByTokenId(String tokenId);
 
-    boolean deleteByTokenId(String tokenId);
+    void deleteByTokenId(String tokenId);
 
-    boolean deleteByRefreshTokenId(String refreshTokenId);
+    void deleteByRefreshTokenId(String refreshTokenId);
 
     FootballOAuth2AccessToken findByAuthenticationId(String key);
 

@@ -2,7 +2,6 @@ package football.sharing.security;
 
 import football.sharing.domain.FootballApproval;
 import football.sharing.repository.user.FootballApprovalRepository;
-import football.sharing.util.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.approval.Approval;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
@@ -25,7 +24,6 @@ public class FootballApprovalStore implements ApprovalStore {
     private final FootballApprovalRepository footballApprovalRepository;
 
     private boolean handleRevocationsAsExpiry = false;
-    private DateHelper dateHelper;
 
     @Autowired
     public FootballApprovalStore(FootballApprovalRepository footballApprovalRepository) {

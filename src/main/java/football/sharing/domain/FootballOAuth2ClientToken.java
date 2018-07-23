@@ -1,13 +1,14 @@
 package football.sharing.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
+@Data
 public class FootballOAuth2ClientToken {
 
     @Id
@@ -18,10 +19,6 @@ public class FootballOAuth2ClientToken {
     private String username;
     private String clientId;
 
-    public FootballOAuth2ClientToken() {
-    }
-
-    @PersistenceConstructor
     public FootballOAuth2ClientToken(final String id,
                                   final String tokenId,
                                   final byte[] token,
@@ -34,30 +31,6 @@ public class FootballOAuth2ClientToken {
         this.authenticationId = authenticationId;
         this.username = username;
         this.clientId = clientId;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getTokenId() {
-        return tokenId;
-    }
-
-    public byte[] getToken() {
-        return token;
-    }
-
-    public String getAuthenticationId() {
-        return authenticationId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getClientId() {
-        return clientId;
     }
 
     @Override
