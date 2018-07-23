@@ -5,12 +5,12 @@ import football.sharing.domain.User;
 import football.sharing.dto.user.UserDTO;
 import football.sharing.mapper.user.UserMapper;
 import football.sharing.repository.user.UserRepository;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service(value = "userService")
 public class UserServiceImpl implements  UserService {
@@ -35,8 +35,7 @@ public class UserServiceImpl implements  UserService {
     }
 
     public List findAll() {
-        List list = new ArrayList<>();
-        userRepository.findAll().iterator().forEachRemaining(list::add);
+        List<UserDTO> list = userRepository.findAll().stream().map(userMapper::userToUserDTO).collect(Collectors.toList());
         return list;
     }
 

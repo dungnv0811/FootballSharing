@@ -17,8 +17,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value="/user", method = RequestMethod.GET)
-    public List listUser(){
+    @GetMapping
+    public List<UserDTO> index(){
         return userService.findAll();
     }
 
