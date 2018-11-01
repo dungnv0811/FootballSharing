@@ -1,7 +1,16 @@
 node {
+
+    def environments = ['Production', 'Development']
+    parameters {
+        string(defaultValue: "TEST", description: 'What environment?', name: 'userFlag')
+        choice(choices: environments, description: 'What AWS region?', name: 'ENVIRONMENT')
+    }
+
     notify('started')
-    sh "echo '${params.ENVIRONMENT}'"
     stage('checkout') {
+        sh "echo 'vandungdn'"
+        sh "echo '${params.ENVIRONMENT}'"
+        sh "echo '${params.userFlag}'"
         checkout scm
     }
     
