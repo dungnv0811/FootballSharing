@@ -1,0 +1,26 @@
+node {
+    notify('started')
+    sh "echo '${params.ENVIRONMENT}'"
+    stage('checkout') {
+        checkout scm
+    }
+    
+    stage('compiling, test, packing') {
+        sh 'mvn clean package'
+    }
+    
+    stage('archival') {
+        step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
+        archiveArtifacts 'target/*.jar'
+    }
+    notify('finished')
+}
+
+def notify(status){
+    emailext (
+      to: "dungnv.itdn@gmail.com",
+      subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
+    )
+}
