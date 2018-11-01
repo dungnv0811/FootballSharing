@@ -12,7 +12,7 @@ node {
                 defaultValue: true,
                 description: 'Checkbox parameter')
         string(name: 'sTrAnGePaRaM',
-                defaultValue: 'Dance!',
+                defaultValue: 'I am dancing!',
                 description: 'Do the funky chicken!')
     }
 
