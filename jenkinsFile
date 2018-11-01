@@ -1,18 +1,27 @@
-pipeline {
-    agent any
+node {
 
     def environments = ['Production', 'Development']
     parameters {
-        string(defaultValue: "TEST", description: 'What environment?', name: 'userFlag')
-        choice(choices: environments, description: 'What AWS region?', name: 'ENVIRONMENT')
+        choice(name: 'door_choice',
+                choices: 'one\ntwo\nthree\nfour',
+                description: 'What door do you choose?')
+        booleanParam(name: 'CAN_DANCE',
+                defaultValue: true,
+                description: 'Checkbox parameter')
+        string(name: 'sTrAnGePaRaM',
+                defaultValue: 'Dance!',
+                description: 'Do the funky chicken!')
     }
 
     notify('started')
     stage('checkout') {
-        sh "echo 'vandungdn'"
-        sh "echo '${params}'"
-        sh "echo '${params}'"
-        checkout scm
+        steps {
+            echo 'Hello World!'
+            echo "Trying: ${params.door_choice}"
+            echo "We can dance: ${params.CAN_DANCE}"
+            echo "The DJ says: ${params.sTrAnGePaRaM}"
+            checkout scm
+        }
     }
     
     stage('compiling, test, packing') {
