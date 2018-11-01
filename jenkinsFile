@@ -1,21 +1,20 @@
-node {
+#!/usr/bin/env groovy
+pipeline {
 
+    agent any
     def environments = ['Production', 'Development']
 
-    properties([
-        parameters([
-            string(name: 'myParam', defaultValue: ''),
-            choice(name: 'door_choice',
-                    choices: 'one\ntwo\nthree\nfour',
-                    description: 'What door do you choose?'),
-            booleanParam(name: 'CAN_DANCE',
-                    defaultValue: true,
-                    description: 'Checkbox parameter'),
-            string(name: 'sTrAnGePaRaM',
-                    defaultValue: 'Dance!',
-                    description: 'Do the funky chicken!')
-        ])
-    ])
+    parameters {
+        choice(name: 'door_choice',
+                choices: 'one\ntwo\nthree\nfour',
+                description: 'What door do you choose?')
+        booleanParam(name: 'CAN_DANCE',
+                defaultValue: true,
+                description: 'Checkbox parameter')
+        string(name: 'sTrAnGePaRaM',
+                defaultValue: 'Dance!',
+                description: 'Do the funky chicken!')
+    }
 
     notify('started')
     stage('checkout') {
