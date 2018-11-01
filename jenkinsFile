@@ -9,8 +9,8 @@ node {
     notify('started')
     stage('checkout') {
         sh "echo 'vandungdn'"
-        sh "echo '${params.ENVIRONMENT}'"
-        sh "echo '${params.userFlag}'"
+        sh "echo '${params}'"
+        sh "echo '${params}'"
         checkout scm
     }
     
