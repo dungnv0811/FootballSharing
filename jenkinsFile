@@ -6,7 +6,7 @@ node {
 
     parameters {
         choice(name: 'door_choice',
-                choices: 'one\ntwo\nthree\nfour',
+                choices: environments,
                 description: 'What door do you choose?')
         booleanParam(name: 'CAN_DANCE',
                 defaultValue: true,
