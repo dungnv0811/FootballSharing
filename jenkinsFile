@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
-pipeline {
 
-    agent any
+node {
+
     def environments = ['Production', 'Development']
 
     parameters {
