@@ -15,13 +15,11 @@ node {
 
     notify('started')
     stage('checkout') {
-        steps {
-            echo 'Hello World!'
-            echo "Trying: ${params.door_choice}"
-            echo "We can dance: ${params.CAN_DANCE}"
-            echo "The DJ says: ${params.sTrAnGePaRaM}"
-            checkout scm
-        }
+        echo 'Hello World!'
+        echo "Trying: ${params.door_choice}"
+        echo "We can dance: ${params.CAN_DANCE}"
+        echo "The DJ says: ${params.sTrAnGePaRaM}"
+        checkout scm
     }
     
     stage('compiling, test, packing') {
