@@ -4,17 +4,19 @@ node {
 
     def environments = ['Production', 'Development']
 
-    parameters {
-        choice(name: 'door_choice',
-                choices: environments,
-                description: 'What door do you choose?')
-        booleanParam(name: 'CAN_DANCE',
-                defaultValue: true,
-                description: 'Checkbox parameter')
-        string(name: 'sTrAnGePaRaM',
-                defaultValue: 'I am dancing updated!',
-                description: 'Do the funky chicken!')
-    }
+    properties([
+        parameters([
+            choice(name: 'door_choice',
+                    choices: environments,
+                    description: 'What door do you choose?'),
+            booleanParam(name: 'CAN_DANCE',
+                    defaultValue: true,
+                    description: 'Checkbox parameter'),
+            string(name: 'sTrAnGePaRaM',
+                    defaultValue: 'I am dancing!',
+                    description: 'Do the funky chicken!')
+        ])
+    ])
 
     notify('started')
     stage('checkout') {
