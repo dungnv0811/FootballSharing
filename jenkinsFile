@@ -16,9 +16,9 @@ node {
     notify('started')
     stage('checkout') {
         echo 'Hello World!'
-        echo "Trying: ${params.door_choice}"
-        echo "We can dance: ${params.CAN_DANCE}"
-        echo "The DJ says: ${params.sTrAnGePaRaM}"
+        echo "Trying: ${env.door_choice}"
+        echo "We can dance: ${env.CAN_DANCE}"
+        echo "The DJ says: ${env.sTrAnGePaRaM}"
         checkout scm
     }
     
