@@ -17,8 +17,8 @@ public class HelloFootballSharingApplicationTests {
 
 	@Test
 	public void testHelloWorld() {
-		String check = "hello world";
-		assertEquals(check, "hello world");
+		String check = "hello world from develop";
+		assertEquals(check, "hello world from develop");
 	}
 
 }
