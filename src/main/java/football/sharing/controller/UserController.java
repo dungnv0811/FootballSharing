@@ -3,6 +3,7 @@ package football.sharing.controller;
 import football.sharing.model.User;
 import football.sharing.service.api.UserAuthenticationService;
 import football.sharing.service.api.UserService;
+import jdk.nashorn.internal.parser.Token;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
@@ -42,8 +43,8 @@ class UserController {
     }
 
     @GetMapping("/current")
-    public User getCurrentUser(@AuthenticationPrincipal User user) {
-        return user;
+    public User getCurrentUser(String token) {
+        return userAuthenticationService.findByToken(token).orElse(null);
     }
 
     @GetMapping("/logout")
