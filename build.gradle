@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'football.sharing'
+version = '0.0.1-SNAPSHOT'
+
+description = "FootballSharing"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.4'
+    implementation group: 'org.projectlombok', name: 'lombok', version:'1.16.20'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version:'3.7'
+    implementation group: 'com.google.guava', name: 'guava', version:'23.0'
+    implementation group: 'org.mapstruct', name: 'mapstruct-jdk8', version:'1.2.0.CR2'
+    implementation group: 'org.apache.solr', name: 'solr-solrj', version:'6.6.2'
+    runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'2.4.4'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.4.4'
+    testImplementation group: 'junit', name: 'junit', version: '4.4'
+}
